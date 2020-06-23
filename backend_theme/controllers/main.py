@@ -6,10 +6,10 @@ import base64
 from odoo.http import Controller, request, route
 from werkzeug.utils import redirect
 
-DEFAULT_IMAGE = '/backend_theme_v13/static/src/img/material-background.png'
+DEFAULT_IMAGE = '/backend_theme/static/src/img/material-background.png'
+
 
 class DasboardBackground(Controller):
-
     @route(['/dashboard'], type='http', auth='user', website=False)
     def dashboard(self, **post):
         user = request.env.user
@@ -19,5 +19,4 @@ class DasboardBackground(Controller):
         else:
             return redirect(DEFAULT_IMAGE)
 
-        return request.make_response(
-            image, [('Content-Type', 'image')])
+        return request.make_response(image, [('Content-Type', 'image')])
